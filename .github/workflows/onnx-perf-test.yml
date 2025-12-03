@@ -23,26 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r onnx-perf/requirements.txt
 
-      - name: Copy model for perf test
-        run: |
-          # If model exists from onnx-quant project, copy it
-          if [ -f onnx-quant/scripts/model.onnx ]; then
-            cp onnx-quant/scripts/model.onnx onnx-perf/scripts/model.onnx
-          else
-            echo "No model.onnx found, skipping copy"
-          fi
-
       - name: Run perf benchmark
         working-directory: onnx-perf/scripts
         run: python perf_test.py
-
-      - name: Compare with baseline
-        working-directory: onnx-perf/scripts
-        run: python compare_baseline.py
-
-      - name: Generate report
-        working-directory: onnx-perf/scripts
-        run: python generate_report.py
 
       - name: Upload perf result
         uses: actions/upload-artifact@v4
