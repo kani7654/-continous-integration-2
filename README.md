@@ -23,10 +23,5 @@ On every push or Pull Request:
 
 4️ Upload performance results (`perf_result.json`) as CI artifacts
 
-If benchmark runs successfully → CI passes 🟢  
-If anything fails → CI stops ❌
-
----
-
-## 📂 Folder Structure
-
+If benchmark runs successfully → CI passes   
+If anything fails → CI stops 
